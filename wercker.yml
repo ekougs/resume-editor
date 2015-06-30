@@ -7,7 +7,7 @@ build:
       code: |
         cd resume-editor-front
         npm install --save-dev
-        bower install
+        bower install --allow-root
         grunt build
 deploy:
   steps:
