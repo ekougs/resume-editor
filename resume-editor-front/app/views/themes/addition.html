@@ -1,0 +1,42 @@
+<form novalidate ng-controller="ThemeAdditionCtrl" name="currentThemeForm">
+  <div class="row form-group">
+    <div class="col-md-3" style="text-align: right">
+      <label for="description">Description</label>
+    </div>
+    <div class="col-md-9">
+      <input class="form-control" type="text" id="description" ng-model="currentTheme.description" ng-required="true">
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-3" style="text-align: right">
+      <label>Theme</label>
+    </div>
+    <div class="col-md-9">
+      <file-upload model="currentTheme.file" accept="text/html" label="Choose your theme"/>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-3" style="text-align: right">
+      <label>Optional CSS</label>
+    </div>
+    <div class="col-md-9">
+      <file-upload model="currentTheme.css" accept="text/html" label="Add optional CSS"/>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-3" style="text-align: right">
+      <label for="cssLibrary">Optional CSS Library</label>
+    </div>
+    <div class="col-md-9">
+      <select class="form-control" id="cssLibrary" ng-model="currentTheme.cssLibrary">
+        <option value="none">None</option>
+        <option value="bootstrap">Bootstrap</option>
+      </select>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-12" style="text-align: right">
+      <button class="btn btn-primary" ng-click="addTheme()" ng-disabled="!isFormValid()">Add theme</button>
+    </div>
+  </div>
+</form>

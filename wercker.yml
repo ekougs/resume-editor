@@ -1,0 +1,20 @@
+box: digitallyseamless/nodejs-bower-grunt
+
+build:
+  steps:
+    - script:
+      name: build front
+      code: |
+        cd resume-editor-front
+        npm install grunt --save-dev
+        grunt build
+deploy:
+  steps:
+    - script:
+        name: jump to dist
+        code: |
+          cd resume-editor-front/dist
+    - wercker-labs/azure-ftp-deploy:
+          publish-url: ftp://ftp.byethost7.com/htdocs
+          username: $FTP_USER
+          password: $FTP_PWD
