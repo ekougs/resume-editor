@@ -7,11 +7,15 @@ build:
       code: |
         cd resume-editor-front
         npm install --save-dev
+        bower install
         grunt build
 deploy:
   steps:
+    - script:
+        name: jump to dist
+        code: |
+          cd resume-editor-front/dist
     - wercker-labs/azure-ftp-deploy:
-          cwd: resume-editor-front/dist
           publish-url: ftp://ftp.byethost7.com/htdocs
-          username: b7_13861671
-          password: qmc0vdrf
+          username: $FTP_USER
+          password: $FTP_PWD
